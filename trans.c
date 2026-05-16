@@ -172,9 +172,15 @@ void newRecord(FILE *fPtr)
     struct clientData client = {0, "", "", 0.0};
     unsigned int accountNum; // account number
 
-    // obtain number of account to create
-    printf("%s", "Enter new account number ( 1 - 100 ): ");
+    
+        printf("%s", "Enter new account number ( 1 - 100 ): ");
     scanf("%d", &accountNum);
+
+    if (accountNum < 1 || accountNum > 100)
+    {
+        printf("Invalid account number.\n");
+        return;
+    }
 
     // move file pointer to correct record in file
     fseek(fPtr, (accountNum - 1) * sizeof(struct clientData), SEEK_SET);

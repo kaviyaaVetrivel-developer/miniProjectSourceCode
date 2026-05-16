@@ -201,6 +201,7 @@ void newRecord(FILE *fPtr)
         fseek(fPtr, (client.acctNum - 1) * sizeof(struct clientData), SEEK_SET);
         // insert record in file
         fwrite(&client, sizeof(struct clientData), 1, fPtr);
+        printf("Account #%d created successfully.\n", client.acctNum);
     } // end else
 } // end function newRecord
 

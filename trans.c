@@ -172,8 +172,7 @@ void newRecord(FILE *fPtr)
     struct clientData client = {0, "", "", 0.0};
     unsigned int accountNum; // account number
 
-    
-        printf("%s", "Enter new account number ( 1 - 100 ): ");
+    printf("%s", "Enter new account number ( 1 - 100 ): ");
     scanf("%d", &accountNum);
 
     if (accountNum < 1 || accountNum > 100)
@@ -218,6 +217,11 @@ unsigned int enterChoice(void)
                  "4 - delete an account\n"
                  "5 - end program\n? ");
 
-    scanf("%u", &menuChoice); // receive choice from user
+    if (scanf("%u", &menuChoice) != 1)
+    {
+        printf("Invalid input.\n");
+        exit(EXIT_FAILURE);
+    }
+
     return menuChoice;
 } // end function enterChoice
